@@ -9,6 +9,12 @@ import {
 import { User } from 'src/app/module/user';
 
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 const user: User =
   {
     email: 'admin@example.com',
@@ -23,6 +29,7 @@ const user: User =
 })
 export class LoginComponent implements OnInit {
   title = 'Login';
+  hide = true;
   formBuilder = inject(FormBuilder);
   loginForm!: FormGroup;
   isLogged = false;
@@ -35,7 +42,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [
-        user && user.email ? user.email : 'n',
+        user && user.email ? user.email : '',
         Validators.required,
       ],
       password: [
