@@ -9,12 +9,12 @@ import {
 import { User } from 'src/app/module/user';
 
 
-const user: User = 
+const user: User =
   {
     email: 'admin@example.com',
     password: 'admin',
   }
- 
+
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [
-        user && user.email ? user.email : '',
+        user && user.email ? user.email : 'n',
         Validators.required,
       ],
       password: [
@@ -45,12 +45,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit = () => {   
+  onSubmit = () => {
 
     const isLogged=(user.email === this.loginForm.value.email &&
       user.password === this.loginForm.value.password);
       console.log(isLogged);
-    
+
       if(isLogged){
         this.userLogged.email=this.loginForm.value.email;
         this.userLogged.password=this.loginForm.value.password;
