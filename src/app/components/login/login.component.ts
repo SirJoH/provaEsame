@@ -6,13 +6,15 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { User } from 'src/app/module/user';
+import { User } from 'src/app/models/user';
 
 
 const user: User =
   {
     email: 'admin@example.com',
     password: 'admin',
+    name: "LucianoSergio",
+    surname: "AmantiaMusumeci"
   }
 
 
@@ -29,13 +31,15 @@ export class LoginComponent implements OnInit {
 
   userLogged:User={
     email:undefined,
-    password:undefined
+    password:undefined,
+    name: undefined,
+    surname: undefined
   }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [
-        user && user.email ? user.email : 'n',
+        user && user.email ? user.email : '',
         Validators.required,
       ],
       password: [
