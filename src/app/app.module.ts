@@ -10,11 +10,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { NotFoundComponent } from './components/not-found-component/not-found-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    HomepageComponent,
+    NotFoundComponent,
   ],
   imports: [
     FormsModule,
@@ -24,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule, 
     MatInputModule, 
     MatButtonModule, 
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

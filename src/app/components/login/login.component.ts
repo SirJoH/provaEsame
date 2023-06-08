@@ -6,20 +6,19 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { User } from 'src/app/module/user';
+
 
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 
-const user: User =
-  {
-    email: 'admin@example.com',
-    password: 'admin',
-  }
+
+
 
 
 @Component({
@@ -27,26 +26,25 @@ const user: User =
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   title = 'Login';
   hide = true;
   formBuilder = inject(FormBuilder);
   loginForm!: FormGroup;
-  isLogged = false;
 
-  userLogged:User={
-    email:undefined,
-    password:undefined
+  constructor(private prova:UserService){
+
   }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [
-        user && user.email ? user.email : '',
+        this.prova && this.prova.user.email ? this.prova.user.email : '',
         Validators.required,
       ],
       password: [
-        user && user.password ? user.password : '',
+        this.prova && this.prova.user.password ? this.prova.user.password : '',
         [Validators.required],
       ],
     });
@@ -54,14 +52,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit = () => {
 
-    const isLogged=(user.email === this.loginForm.value.email &&
-      user.password === this.loginForm.value.password);
-      console.log(isLogged);
+      this.prova.isLoggedIn=(this.prova.user.email === this.loginForm.value.email &&
+      this.prova.user.password === this.loginForm.value.password);
+      console.log(this.prova.isLoggedIn);
 
-      if(isLogged){
-        this.userLogged.email=this.loginForm.value.email;
-        this.userLogged.password=this.loginForm.value.password;
+      if(this.prova.isLoggedIn) {
+        this.prova.userLogged.email=this.loginForm.value.email;
+        this.prova.userLogged.password=this.loginForm.value.password;
       }
-      console.log(this.userLogged);
+      console.log(this.prova.userLogged);
   };
 }
