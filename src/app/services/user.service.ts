@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class UserService {
   {
     email: 'admin@example.com',
     password: 'admin',
-    name: "LucianoSergio",
+    name: "ADMIN",
     surname: "AmantiaMusumeci"
   }
 
@@ -22,5 +24,14 @@ export class UserService {
 
   isLoggedIn: boolean = false
   
-  constructor() { }
+  constructor(private router: Router) { }
+
+  logout(){
+    console.log(this.isLoggedIn);
+    this.isLoggedIn=false
+    console.log(this.isLoggedIn);
+    this.userLogged.email=undefined;
+    this.userLogged.password=undefined;
+    this.router.navigate(['login']);
+  }
 }
