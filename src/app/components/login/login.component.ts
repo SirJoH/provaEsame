@@ -6,7 +6,9 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import {Location} from '@angular/common';
 
+import { Router } from '@angular/router';
 
 
 import {MatIconModule} from '@angular/material/icon';
@@ -33,7 +35,11 @@ export class LoginComponent implements OnInit {
   formBuilder = inject(FormBuilder);
   loginForm!: FormGroup;
 
-  constructor(private prova:UserService){
+  location = inject(Location);
+
+
+
+  constructor(private prova:UserService, private router:Router){
 
   }
 
@@ -59,6 +65,7 @@ export class LoginComponent implements OnInit {
       if(this.prova.isLoggedIn) {
         this.prova.userLogged.email=this.loginForm.value.email;
         this.prova.userLogged.password=this.loginForm.value.password;
+        this.router.navigate(['home']);
       }
       console.log(this.prova.userLogged);
   };

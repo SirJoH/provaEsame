@@ -11,5 +11,7 @@ export class NotFoundComponent {
   location = inject(Location);
 
   goBack=() => this.location.back();
+  
+
 
 }
