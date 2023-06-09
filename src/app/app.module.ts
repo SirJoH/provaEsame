@@ -13,6 +13,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotFoundComponent } from './components/not-found-component/not-found-component.component';
+import { CardContainerComponent } from './components/card-container/card-container.component';
+import { CardComponent } from './components/card/card.component';
+import { ListingComponent } from './components/listing/listing.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { NotFoundComponent } from './components/not-found-component/not-found-co
     LoginComponent,
     HomepageComponent,
     NotFoundComponent,
+    CardContainerComponent,
+    CardComponent,
+    ListingComponent
   ],
   imports: [
     FormsModule,

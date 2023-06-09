@@ -1,1 +1,16 @@
-<p>listing works!</p>
+<!-- <div *ngIf="data | async as cards">
+    <ng-container >
+        <ul>
+            <li *ngFor="let item of cards">{{item.name}}</li>
+        </ul>
+    </ng-container>
+</div> -->
+
+
+<div *ngIf="data | async as cards">
+    <h1>Dati ottenuti dalla chiamata API</h1>
+    <ul>
+      <li *ngFor="let card of cards">{{ card.name }}</li>
+    </ul>
+  </div>
+  
