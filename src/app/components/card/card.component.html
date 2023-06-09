@@ -1,1 +1,5 @@
-<p>card works!</p>
+<div *ngIf="card; else noCard">
+  <img *ngIf="card && card.srcImg" [src]="card.srcImg" alt="img" />
+  <h1>{{ card.title || "No title" }}</h1>
+</div>
+<ng-template #noCard>no card</ng-template>
