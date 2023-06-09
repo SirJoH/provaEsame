@@ -1,3 +1,4 @@
+//`https://randomuser.me/api/?results=1000&seed=contactgram&nat=us,fr,gb&exc=login,registered&noinfo`
 export interface Data {
   gender: string;
   name: {
