@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Card } from 'src/app/models/Card';
 import { Data } from 'src/app/models/Data';
 
@@ -10,16 +10,12 @@ import { Data } from 'src/app/models/Data';
   styleUrls: ['./listing.component.scss'],
 })
 export class ListingComponent {
-  response = new Subject<Card[]>();
-  cards: Card[] = [];
+  response = new BehaviorSubject<Card[]>([]);
+  data!: Data[];
+  cards!: Card[];
   http = inject(HttpClient);
-
   ngOnInit(): void {
-    this.getData();
-    this.response.subscribe((cardData) => {
-      this.cards=cardData;
-    });
-    console.log("cards",this.cards);
+    this.getData();  
   }
   getData = () => {
     this.http
@@ -27,14 +23,16 @@ export class ListingComponent {
         'https://randomuser.me/api/?results=1000&seed=contactgram&nat=us,fr,gb&exc=login,registered&noinfo'
       )
       .subscribe((items) => {
-        if (Array.isArray(items) && items.length > 0) {
-          const cardData: Card[] = items.map((user) => ({
-            title: user.name.first,
-            description: user.name.last,
-            srcImg: user.picture.medium,
-          }));
-          this.response.next(cardData);
-        }
+        this.data = items;
+        this.cards = this.data.map((item) => {
+          return {
+            title: item.name.first,
+            description: item.name.last,
+            srcImg: item.picture.medium,
+          }
+        });
+        console.log(this.cards)
       });
   };
+  
 }
