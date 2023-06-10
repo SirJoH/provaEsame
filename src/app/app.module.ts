@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,12 +19,11 @@ import { ListingComponent } from './components/listing/listing.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HomepageComponent,
     NotFoundComponent,
     CardContainerComponent,
     CardComponent,
-    ListingComponent
+    ListingComponent,
   ],
   imports: [
     HttpClientModule,
