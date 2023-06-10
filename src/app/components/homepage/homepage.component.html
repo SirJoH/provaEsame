@@ -9,11 +9,13 @@
           <a class="nav-link" href="#">Link</a>
         </li>
       </ul>
+    <small class="mx-3">Ciao, {{[this.userService.user.name]}}!</small>
     </div>
     
     <small class="mx-3">Ciao,{{this.userService.getUser('userLogged').name}}!</small>
 
     <button (click)="this.userService.logout()">Logout</button>
+
   </div>
  
 </nav>
