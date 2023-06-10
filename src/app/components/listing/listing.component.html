@@ -9,6 +9,6 @@
 
 <div>
     <ng-container *ngFor="let item of cards">
-        <app-card [card]="item"></app-card>
+        <app-card [card]="item" (click)="onSubmit(item)"></app-card>
     </ng-container>
 </div>
