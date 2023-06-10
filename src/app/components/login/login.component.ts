@@ -31,7 +31,7 @@ import { UserService } from 'src/app/services/user.service';
 
 export class LoginComponent implements OnInit {
   title = 'Login';
-  hide = true;
+  submitted=false;
   formBuilder = inject(FormBuilder);
   loginForm!: FormGroup;
 
@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit = () => {
+      this.submitted = true;
 
       var check=(this.prova.getUser('newUser').email === this.loginForm.value.email &&
       this.prova.getUser('newUser').password === this.loginForm.value.password);
