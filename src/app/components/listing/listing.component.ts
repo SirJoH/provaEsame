@@ -19,11 +19,11 @@ export class ListingComponent {
   }
   getData = () => {
     this.http
-      .get<Data[]>(
+      .get<any>(
         'https://randomuser.me/api/?results=1000&seed=contactgram&nat=us,fr,gb&exc=login,registered&noinfo'
       )
       .subscribe((items) => {
-        this.data = items;
+        this.data = items.results;
         this.cards = this.data.map((item) => {
           return {
             title: item.name.first,
