@@ -7,31 +7,66 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
-  user: User =
-  {
-    email: 'admin@example.com',
-    password: 'admin',
-    name: "ADMIN",
-    surname: "AmantiaMusumeci"
-  }
+  
+  // user: User =
+  // {
+  //   email: 'admin@example.com',
+  //   password: 'admin',
+  //   name: "ADMIN",
+  //   surname: "AmantiaMusumeci"
+  // }
 
-  userLogged:User={
-    email:undefined,
-    password:undefined,
-    name: undefined,
-    surname: undefined
-  }
+  // userLogged:User={
+  //   email:undefined,
+  //   password:undefined,
+  //   name: undefined,
+  //   surname: undefined
+  // }
 
-  isLoggedIn: boolean = false
+
+
+
+  
   
   constructor(private router: Router) { }
 
+  
+
+  saveData(key: string, value: string) {
+    localStorage.setItem(key, value);
+  }
+
+  getData(key: string) {
+    return localStorage.getItem(key) || '';
+  }
+
+  getUser(key: string) {
+    const sergio = JSON.parse(this.getData(key));
+    return sergio;
+  }
+
+
+  removeData(key: string) {
+    localStorage.removeItem(key);
+
+  }
+
+  clearData() {
+    localStorage.clear();
+  }
+
+  newUser() {
+    const userJson = '{"email":"admin@example.com","password":"admin","name":"ADMIN","surname":"Peroni"}';
+    this.saveData("newUser", userJson);
+    console.log(this.getData('newUser'));
+  }
+
+
   logout(){
-    console.log(this.isLoggedIn);
-    this.isLoggedIn=false
-    console.log(this.isLoggedIn);
-    this.userLogged.email=undefined;
-    this.userLogged.password=undefined;
-    this.router.navigate(['login']);
+    //SISTEMARE IL LOGOUT
+    this.saveData('isLogged','false');
+
+
+
   }
 }
