@@ -7,10 +7,9 @@
 </div> -->
 
 
-<div *ngIf="data | async as cards">
-    <h1>Dati ottenuti dalla chiamata API</h1>
-    <ul>
-      <li *ngFor="let card of cards">{{ card.name }}</li>
-    </ul>
-  </div>
+<div>
+    <ng-container *ngFor="let item of cards">
+        <app-card [card]="item"></app-card>
+    </ng-container>
+</div>
   
