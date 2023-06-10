@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found-component/not-found-component.component';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 // full
 // prefix
 const routes: Routes = [
   {path: '', redirectTo:'home',pathMatch: 'full'},
   {path: 'login', component:LoginComponent, pathMatch:'full'},
-  {path: 'home', component:HomepageComponent, pathMatch:'full'},
+  {path: 'home', component:HomepageComponent, pathMatch:'full',canActivate:[AuthGuard]},
   {path: '**', component:NotFoundComponent, pathMatch:'full'}
 ];
 

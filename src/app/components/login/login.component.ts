@@ -44,13 +44,22 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.prova.saveData('isLogged','false');
+    //SIMULO REGISTRAZIONE
+    this.prova.newUser();
+    //CONTROLLO L'UNTENTE REGISTRATO
+    console.log('GET USER');
+    console.log(this.prova.getUser('newUser'));
+
+
+
     this.loginForm = this.formBuilder.group({
       email: [
-        this.prova && this.prova.user.email ? this.prova.user.email : '',
+        this.prova && this.prova.getUser('newUser').email ? this.prova.getUser('newUser').email : '',
         Validators.required,
       ],
       password: [
-        this.prova && this.prova.user.password ? this.prova.user.password : '',
+        this.prova && this.prova.getUser('newUser').password ? this.prova.getUser('newUser').password : '',
         [Validators.required],
       ],
     });
@@ -58,15 +67,27 @@ export class LoginComponent implements OnInit {
 
   onSubmit = () => {
 
-      this.prova.isLoggedIn=(this.prova.user.email === this.loginForm.value.email &&
-      this.prova.user.password === this.loginForm.value.password);
-      console.log(this.prova.isLoggedIn);
+      var check=(this.prova.getUser('newUser').email === this.loginForm.value.email &&
+      this.prova.getUser('newUser').password === this.loginForm.value.password);
 
-      if(this.prova.isLoggedIn) {
-        this.prova.userLogged.email=this.loginForm.value.email;
-        this.prova.userLogged.password=this.loginForm.value.password;
+
+      if(check) {
+        this.prova.saveData('userLogged', JSON.stringify(this.prova.getUser('newUser')));
+
+        //ADD isLogged in LOCALSTORAGE
+        this.prova.saveData('isLogged','true');
+        
+        console.log('SONO DENTRO l IF');
+        console.log(JSON.stringify(this.prova.getUser('userLogged')));
+        this.prova.getUser('userLogged').email=this.loginForm.value.email;
+        this.prova.getUser('userLogged').password=this.loginForm.value.password;
         this.router.navigate(['home']);
       }
-      console.log(this.prova.userLogged);
+
+      console.log('STAMPA NEW USER')
+      console.log(this.prova.getUser('newUser'));
+      console.log('STAMPA USER-LOGGED')
+      console.log(this.prova.getUser('userLogged'));
+
   };
 }
