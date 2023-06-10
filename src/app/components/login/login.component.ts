@@ -32,6 +32,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
   title = 'Login';
   submitted=false;
+  check=false;
   formBuilder = inject(FormBuilder);
   loginForm!: FormGroup;
 
@@ -39,27 +40,27 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private prova:UserService, private router:Router){
+  constructor(private userService:UserService, private router:Router){
 
   }
 
   ngOnInit(): void {
-    this.prova.saveData('isLogged','false');
+    this.userService.saveData('isLogged','false');
     //SIMULO REGISTRAZIONE
-    this.prova.newUser();
+    this.userService.newUser();
     //CONTROLLO L'UNTENTE REGISTRATO
     console.log('GET USER');
-    console.log(this.prova.getUser('newUser'));
+    console.log(this.userService.getUser('newUser'));
 
 
 
     this.loginForm = this.formBuilder.group({
       email: [
-        this.prova && this.prova.getUser('newUser').email ? this.prova.getUser('newUser').email : '',
+        this.userService && this.userService.getUser('newUser').email ? this.userService.getUser('newUser').email : '',
         Validators.required,
       ],
       password: [
-        this.prova && this.prova.getUser('newUser').password ? this.prova.getUser('newUser').password : '',
+        this.userService && this.userService.getUser('newUser').password ? this.userService.getUser('newUser').password : '',
         [Validators.required],
       ],
     });
@@ -68,27 +69,30 @@ export class LoginComponent implements OnInit {
   onSubmit = () => {
       this.submitted = true;
 
-      var check=(this.prova.getUser('newUser').email === this.loginForm.value.email &&
-      this.prova.getUser('newUser').password === this.loginForm.value.password);
+      this.check=(this.userService.getUser('newUser').email === this.loginForm.value.email &&
+      this.userService.getUser('newUser').password === this.loginForm.value.password);
 
 
-      if(check) {
-        this.prova.saveData('userLogged', JSON.stringify(this.prova.getUser('newUser')));
+      if(this.check) {
+        this.userService.saveData('userLogged', JSON.stringify(this.userService.getUser('newUser')));
 
         //ADD isLogged in LOCALSTORAGE
-        this.prova.saveData('isLogged','true');
+        this.userService.saveData('isLogged','true');
         
         console.log('SONO DENTRO l IF');
-        console.log(JSON.stringify(this.prova.getUser('userLogged')));
-        this.prova.getUser('userLogged').email=this.loginForm.value.email;
-        this.prova.getUser('userLogged').password=this.loginForm.value.password;
+        console.log(JSON.stringify(this.userService.getUser('userLogged')));
+        this.userService.getUser('userLogged').email=this.loginForm.value.email;
+        this.userService.getUser('userLogged').password=this.loginForm.value.password;
         this.router.navigate(['home']);
+      }else{
+        alert('Email o Password errati');
       }
+     
 
       console.log('STAMPA NEW USER')
-      console.log(this.prova.getUser('newUser'));
+      console.log(this.userService.getUser('newUser'));
       console.log('STAMPA USER-LOGGED')
-      console.log(this.prova.getUser('userLogged'));
+      console.log(this.userService.getUser('userLogged'));
 
   };
 }
