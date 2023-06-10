@@ -3,6 +3,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Card } from 'src/app/models/Card';
 import { Data } from 'src/app/models/Data';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-listing',
@@ -14,6 +16,8 @@ export class ListingComponent {
   data!: Data[];
   cards!: Card[];
   http = inject(HttpClient);
+  router = inject(Router);
+
   ngOnInit(): void {
     this.getData();  
   }
@@ -35,4 +39,11 @@ export class ListingComponent {
       });
   };
   
+
+  onSubmit(singleUser:Card){
+    
+
+    this.router.navigate(['detail'])
+
+  }
 }
