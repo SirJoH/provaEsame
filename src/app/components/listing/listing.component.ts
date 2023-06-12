@@ -4,6 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Card } from 'src/app/models/Card';
 import { Data } from 'src/app/models/Data';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -17,9 +18,10 @@ export class ListingComponent {
   cards!: Card[];
   http = inject(HttpClient);
   router = inject(Router);
+  userService = inject(UserService);
 
   ngOnInit(): void {
-    this.getData();  
+    this.getData();
   }
   getData = () => {
     this.http
@@ -38,10 +40,10 @@ export class ListingComponent {
         console.log(this.cards)
       });
   };
-  
+
 
   onSubmit(singleUser:Card){
-    
+
 
     this.router.navigate(['detail'])
 

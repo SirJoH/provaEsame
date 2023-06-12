@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { Data } from '../models/Data';
+import { Card } from '../models/Card';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  
+
   // user: User =
   // {
   //   email: 'admin@example.com',
@@ -26,11 +28,28 @@ export class UserService {
 
 
 
-  
-  
+
+
   constructor(private router: Router) { }
 
-  
+  setFavorite(profile: Card) {
+  const luciano = JSON.parse(this.getData('userLogged'));
+
+  if (luciano.favorites.find((p: Card) => p.title === profile.title)) {
+    const newArr: Card[] = luciano.favorites.filter((element: Card) => element.title !== profile.title);
+    luciano.favorites = newArr;
+    this.saveData('userLogged', JSON.stringify(luciano));
+  } else {
+    luciano.favorites.push(profile);
+    this.saveData('userLogged', JSON.stringify(luciano));
+  }
+
+  console.log(luciano.favorites);
+}
+
+
+
+
 
   saveData(key: string, value: string) {
     localStorage.setItem(key, value);
@@ -48,7 +67,6 @@ export class UserService {
 
   removeData(key: string) {
     localStorage.removeItem(key);
-
   }
 
   clearData() {
@@ -56,17 +74,14 @@ export class UserService {
   }
 
   newUser() {
-    const userJson = '{"email":"admin@example.com","password":"admin","name":"ADMIN","surname":"Peroni"}';
+    const userJson = '{"email":"admin@example.com","password":"admin","name":"ADMIN","surname":"Peroni", "favorites": []}';
     this.saveData("newUser", userJson);
     console.log(this.getData('newUser'));
   }
 
 
-  logout(){
+  logout() {
     //SISTEMARE IL LOGOUT
-    this.saveData('isLogged','false');
-
-
-
+    this.saveData('isLogged', 'false');
   }
 }
