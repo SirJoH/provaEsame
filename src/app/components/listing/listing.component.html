@@ -18,8 +18,8 @@
   </div>
   <div [ngClass]="'row'">
     <ng-container *ngFor="let item of filteredData">
-      <div [ngClass]="'col-4'">
-      <app-card [card]="item" [ngStyle]="{padding: '5px'}">
+      <div class="'col col-sm-6 col-md-4 col-lg-3'">
+      <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="card my-5">
         <app-details></app-details>
       </app-card>
     </div>

@@ -3,7 +3,7 @@
     <img *ngIf="card && card.srcImg" [src]="card.srcImg" alt="img" />
     <h3>{{ card.title || "No title" }}</h3>
     <h3>{{ card.description || "No title" }}</h3>
-    <button (click)="userService.setFavorite(card)">Like</button>
+    <button class="rounded-pill btn btn-primary" (click)="userService.setFavorite(card)">Like</button>
   </div>
 </div>
 <ng-template #noCard>no card</ng-template>
