@@ -10,27 +10,13 @@ import { Card } from '../models/Card';
 })
 export class UserService {
 
-  // user: User =
-  // {
-  //   email: 'admin@example.com',
-  //   password: 'admin',
-  //   name: "ADMIN",
-  //   surname: "AmantiaMusumeci"
-  // }
-
-  // userLogged:User={
-  //   email:undefined,
-  //   password:undefined,
-  //   name: undefined,
-  //   surname: undefined
-  // }
-
-
-
-
-
+  selectedCard!: Card;
 
   constructor(private router: Router) { }
+
+  setCard(profile: Card) {
+    this.selectedCard = profile;
+  }
 
   setFavorite(profile: Card) {
   const luciano = JSON.parse(this.getData('userLogged'));
@@ -46,9 +32,6 @@ export class UserService {
 
   console.log(luciano.favorites);
 }
-
-
-
 
 
   saveData(key: string, value: string) {

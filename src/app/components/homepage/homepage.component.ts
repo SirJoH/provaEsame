@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from 'src/app/models/post';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth-guard.guard';
 
 @Component({

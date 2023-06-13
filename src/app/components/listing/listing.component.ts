@@ -5,6 +5,8 @@ import { Card } from 'src/app/models/Card';
 import { Data } from 'src/app/models/Data';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import {Location} from '@angular/common';
+
 
 
 @Component({
@@ -19,6 +21,9 @@ export class ListingComponent {
   http = inject(HttpClient);
   router = inject(Router);
   userService = inject(UserService);
+  location = inject(Location);
+
+
 
   ngOnInit(): void {
     this.getData();
@@ -41,11 +46,7 @@ export class ListingComponent {
       });
   };
 
+  goBack=() => this.location.back();
 
-  onSubmit(singleUser:Card){
 
-
-    this.router.navigate(['detail'])
-
-  }
 }

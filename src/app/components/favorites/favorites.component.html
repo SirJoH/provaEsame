@@ -1,0 +1,13 @@
+<button (click)="goBack()">Torna indietro</button>
+
+<div>
+  <h1>FAVORITES</h1>
+    <ng-container *ngFor="let item of userLogged.favorites">
+      <app-card [card]="item" >
+        <app-details (favoriteChanged)="prova($event)"></app-details>
+      </app-card>
+    </ng-container>
+</div>
+<!-- <button (click)="addNewItem(newItem.value)">Add to parent's list</button> -->
+<!-- <app-customer-detail [customer]="selectedCustomer" (customerChange)="update($event)"></app-customer-detail> -->
+

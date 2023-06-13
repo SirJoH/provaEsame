@@ -16,16 +16,20 @@ import { CardContainerComponent } from './components/card-container/card-contain
 import { CardComponent } from './components/card/card.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { LoginComponent } from './components/login/login.component';
+import { DetailsComponent } from './components/details/details.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
     AppComponent,
+    LoginComponent,
     HomepageComponent,
     NotFoundComponent,
     CardContainerComponent,
     CardComponent,
     ListingComponent,
+    DetailsComponent,
+    FavoritesComponent,
   ],
   imports: [
     HttpClientModule,
@@ -33,12 +37,12 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     MatIconModule,
     MatCardModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

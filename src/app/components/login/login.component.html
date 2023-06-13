@@ -9,7 +9,7 @@
 
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
-              
+
               <form [formGroup]="loginForm" class="form-outline form-white mb-4">
                 <div class="form-group">
 
@@ -18,7 +18,7 @@
 
                     <label class="my-2">Email:</label>
                     <input type='email' class="form-control" formControlName="email" required>
-                    <small *ngIf="submitted && loginForm.get('email')?.hasError('required')">Campo richiesto</small>  
+                    <small *ngIf="submitted && loginForm.get('email')?.hasError('required')">Campo richiesto</small>
                   </div>
 
                   <div class="my-2">
@@ -27,7 +27,7 @@
                     <small *ngIf="submitted && loginForm.get('password')?.hasError('required')">Campo richiesto</small>
                   </div>
 
-                  <button class="btn btn-outline-light btn-lg px-5 my-5" (click)="onSubmit()" >Login</button>                 
+                  <button class="btn btn-outline-light btn-lg px-5 my-5" (click)="onSubmit()" >Login</button>
                 </div>
               </form>
             </div>
