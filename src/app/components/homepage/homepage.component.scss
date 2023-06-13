@@ -1,6 +1,20 @@
+.containerNav {
+  position: fixed;
+  z-index: 500;
+  width: 100%;
+}
+
+nav {
+  background-color: #613DC1;
+  color: white;
+  a, ul, li{
+    color: white;
+  }
+}
+
 .footer {
   font-size: 14px;
-  background-color: #1f1f24;
+  background-color: #613DC1;
   padding: 50px 0;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -86,5 +100,9 @@
 }
 
 p {
-  font-size: 2rem;
+  font-size: 1.4rem;
+}
+
+.section {
+  background-color: #858AE3;
 }

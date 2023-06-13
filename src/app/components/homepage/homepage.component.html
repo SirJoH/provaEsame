@@ -1,44 +1,50 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">ProgettoAngular</a>
+<div class="container-fluid containerNav p-0">
+  <nav class="navbar navbar-expand-lg justify-content-between p-2">
+    <div>
+      <a class="navbar-brand" [routerLink]="['/home']">ProgettoAngular</a>
+    </div>
+    <div>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink='/profiles'>Profiles</a>
-
+          <a class="nav-link" aria-current="page" href="#profilesSection">Profiles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink='/favorites'>Favorites</a>
+          <a class="nav-link" aria-current="page" href="#favoritesSection">Favorites</a>
         </li>
       </ul>
     </div>
-
-    <small class="mx-3">Ciao,{{this.userService.getUser('userLogged').name}}!</small>
-
-    <button (click)="this.userService.logout()">Logout</button>
-
-
-
-</nav>
-
-
-
-<div class="container">
-  <div class="row p-5 my-5" style="border-radius: 50px; border-style: solid; border-color: grey; background-color: cornflowerblue">
-    <div class="col-6 d-flex justify-content-center align-items-center">
-      <img class="w-50" [src]="img1" alt="Profiles">
+    <div>
+      <small class="mx-3">Ciao,{{this.userService.getUser('userLogged').name}}!</small>
+      <button (click)="this.userService.logout()">Logout</button>
     </div>
-    <div class="col-6 d-flex justify-content-center align-items-center">
-      <p class="text-center" style="font-size:2vw; width: 100%; max-width: 100%; overflow-wrap: break-word;">Clicca qui per visualizzare tutti i profili del sito e scoprire persone interessanti da connetterti!</p>
-    </div>
+  </nav>
+</div>
 
-  </div>
-  <div class="row p-5 my-5" style="border-radius: 50px; border-style: solid; border-color: grey; background-color: pink;">
-    <div class="col-6 d-flex justify-content-center align-items-center">
-      <p class="text-center" style="font-size:2vw; width: 100%; max-width: 100%; overflow-wrap: break-word;">Qui puoi trovare i profili che hai aggiunto ai tuoi preferiti. Scopri chi ti piace di più!</p>
-    </div>
 
-    <div class="col-6 d-flex justify-content-center align-items-center">
-      <img class="w-50" [src]="img2" alt="Profiles">
+
+<div class="section" style="padding-top: 56px;">
+  <div class="container py-5" style="padding-top: 56px;">
+    <div class="row p-5 my-5" [routerLink]="['/profiles']" id="profilesSection"
+      style="border-radius: 50px; border-style: solid; border-color: grey; background-color: cornflowerblue">
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img class="w-50" [src]="img1" alt="Profiles">
+      </div>
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <p class="text-center" style="font-size:3.5vw; max-width: 100%; overflow-wrap: break-word;">Clicca
+          qui per visualizzare tutti i profili del sito e scoprire persone interessanti da connetterti!</p>
+      </div>
+
+    </div>
+    <div class="row p-5 my-5" [routerLink]="['/favorites']" id="favoritesSection"
+      style="border-radius: 50px; border-style: solid; border-color: grey; background-color: pink;">
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <p class="text-center" style="font-size:3.5vw; max-width: 100%; overflow-wrap: break-word;">Qui puoi
+          trovare i profili che hai aggiunto ai tuoi preferiti. Scopri chi ti piace di più!</p>
+      </div>
+
+      <div class="col-6 d-flex justify-content-center align-items-center">
+        <img class="w-50" [src]="img2" alt="Profiles">
+      </div>
     </div>
   </div>
 </div>
