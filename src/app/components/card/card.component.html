@@ -1,8 +1,8 @@
 <div *ngIf="card; else noCard">
-  <div (click)="onClick(card)">
+  <div (click)="onClick(card)" [ngClass]="'container-fluid d-flex align-items-center justify-content-center flex-column mt-3 mb-3'">
     <img *ngIf="card && card.srcImg" [src]="card.srcImg" alt="img" />
-    <h1>{{ card.title || "No title" }}</h1>
-    <h1>{{ card.description || "No title" }}</h1>
+    <h3>{{ card.title || "No title" }}</h3>
+    <h3>{{ card.description || "No title" }}</h3>
     <button (click)="userService.setFavorite(card)">Like</button>
   </div>
 </div>
