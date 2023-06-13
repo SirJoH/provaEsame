@@ -22,7 +22,8 @@ export class ListingComponent {
   router = inject(Router);
   userService = inject(UserService);
   location = inject(Location);
-
+  searchTerm = '';
+  filteredData!:Card[];
 
 
   ngOnInit(): void {
@@ -42,11 +43,23 @@ export class ListingComponent {
             srcImg: item.picture.medium,
           }
         });
+        this.filteredData=this.cards;
         console.log(this.cards)
       });
   };
 
   goBack=() => this.location.back();
 
+  filterData() {
+    if (this.searchTerm.length > 1) {
+      this.filteredData = this.cards.filter(item =>
+        item.description.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        (item.title+" "+item.description).toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredData = this.cards;
+    }
+  }
 
 }

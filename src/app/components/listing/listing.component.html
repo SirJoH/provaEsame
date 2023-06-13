@@ -10,7 +10,8 @@
 
 <div>
   <h1>LISTING</h1>
-    <ng-container *ngFor="let item of cards">
+  <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="filterData()">
+    <ng-container *ngFor="let item of filteredData">
       <app-card [card]="item">
         <app-details></app-details>
       </app-card>
