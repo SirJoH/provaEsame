@@ -3,8 +3,6 @@
     <img *ngIf="card && card.srcImg" [src]="card.srcImg" alt="img" />
     <h1>{{ card.title || "No title" }}</h1>
     <h1>{{ card.description || "No title" }}</h1>
-  </div>
-  <div>
     <button (click)="userService.setFavorite(card)">Like</button>
   </div>
 </div>
