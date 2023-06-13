@@ -18,6 +18,7 @@ import { ListingComponent } from './components/listing/listing.component';
 import { LoginComponent } from './components/login/login.component';
 import { DetailsComponent } from './components/details/details.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     ListingComponent,
     DetailsComponent,
     FavoritesComponent,
+    RegisterComponent,
   ],
   imports: [
     HttpClientModule,

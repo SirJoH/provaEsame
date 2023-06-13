@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.userService.saveData('isLogged','false');
     //SIMULO REGISTRAZIONE
-    this.userService.newUser();
+
     //CONTROLLO L'UNTENTE REGISTRATO
     console.log('GET USER');
     console.log(this.userService.getUser('newUser'));
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
 
         //ADD isLogged in LOCALSTORAGE
         this.userService.saveData('isLogged','true');
-        
+
         console.log('SONO DENTRO l IF');
         console.log(JSON.stringify(this.userService.getUser('userLogged')));
         this.userService.getUser('userLogged').email=this.loginForm.value.email;
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
       }else{
         alert('Email o Password errati');
       }
-     
+
 
       console.log('STAMPA NEW USER')
       console.log(this.userService.getUser('newUser'));

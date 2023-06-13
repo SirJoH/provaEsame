@@ -65,6 +65,11 @@ export class UserService {
 
   logout() {
     //SISTEMARE IL LOGOUT
+    const userBackup=this.getData('userLogged');
+    this.saveData('newUser', userBackup);
+    this.removeData('userLogged');
+    console.log('STAMPO NEW USER LOGOUT')
+    console.log(JSON.stringify(this.getData('newUser')));
     this.saveData('isLogged', 'false');
   }
 }

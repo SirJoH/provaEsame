@@ -17,6 +17,9 @@ import { AuthGuard } from 'src/app/guards/auth-guard.guard';
 export class HomepageComponent implements OnInit, DoCheck {
   constructor(public userService: UserService,private router: Router) { }
 
+
+  img1= "../../../assets/images/profileIcon.png"
+  img2 = "../../../assets/images/heartIcon.png"
   ngOnInit() {
     console.log('GET DATA');
     console.log(JSON.parse(this.userService.getData('isLogged')));

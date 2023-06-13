@@ -5,8 +5,8 @@
 </div>
 <ng-template #nosingleProfile>no loading</ng-template> -->
 <button (click)="goBack()">Torna indietro</button>
-<img *ngIf="userService.selectedCard.srcImg" [src]="userService.selectedCard.srcImg" alt="img" />
+<img *ngIf="userService.selectedCard?.srcImg" [src]="userService.selectedCard.srcImg" alt="img" />
 
-<h1>{{ userService.selectedCard.title  || "No title" }}</h1>
-<h1>{{ userService.selectedCard.description || "No description" }}</h1>
+<h1>{{ userService.selectedCard?.title  || "No title" }}</h1>
+<h1>{{ userService.selectedCard?.description || "No description" }}</h1>
 <button (click)="userService.setFavorite(userService.selectedCard)">Like</button>
