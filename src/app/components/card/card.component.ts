@@ -1,6 +1,6 @@
 import { Component, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Card } from 'src/app/models/Card';
+import { Card } from 'src/app/models/Profile';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

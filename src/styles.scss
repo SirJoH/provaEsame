@@ -10,3 +10,20 @@
     font-family: 'CustomFont', Arial, sans-serif;
 }
 
+button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover{
+    background-color: #ececec;
+    color: #007bff;
+}
+

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CardComponent } from '../card/card.component';
-import { Card } from 'src/app/models/Card';
+import { Card } from 'src/app/models/Profile';
 import { UserService } from 'src/app/services/user.service';
 import {Location} from '@angular/common';
 

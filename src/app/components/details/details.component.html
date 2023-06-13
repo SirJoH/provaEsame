@@ -1,12 +1,21 @@
-<!-- <div *ngIf="singleProfile; else nosingleProfile">
-  <img *ngIf="singleProfile.srcImg" [src]="singleProfile.srcImg" alt="img" />
-  <h1>{{ singleProfile.title || "No title" }}</h1>
-  <h1>{{ singleProfile.description || "No description" }}</h1>
-</div>
-<ng-template #nosingleProfile>no loading</ng-template> -->
 <button (click)="goBack()">Torna indietro</button>
-<img *ngIf="userService.selectedCard?.srcImg" [src]="userService.selectedCard?.srcImg" alt="img" />
+<div class="row d-flex ">
+  <div class="col-12 d-flex justify-content-center">
+    <img class="w-25" *ngIf="userService.selectedCard?.picture?.large" [src]="userService.selectedCard?.picture?.medium" alt="img" />
+  </div>
+  <div class="col-12 d-flex justify-content-center">
+    <h1>{{ userService.selectedCard?.name?.first|| "No title" }} {{ userService.selectedCard?.name?.last || "No description" }}</h1>
+  </div>
+  <div class="col-12 d-flex flex-column justify-content-center text-center">
+    <h1>email: {{ userService.selectedCard?.email|| "No title" }} </h1>
+    <h1>birthday: {{ userService.selectedCard?.dob?.date|| "No title" }} </h1>
+    <h1>age: {{ userService.selectedCard?.dob?.age|| "No title" }} </h1>
+    <h1>gender: {{ userService.selectedCard?.gender|| "No title" }} </h1>
+    <h1>city: {{ userService.selectedCard?.location?.city|| "No title" }} ({{ userService.selectedCard?.location?.state }}) </h1>
+    <h1>phone: {{ userService.selectedCard?.phone|| "No title" }} </h1>
+  </div>
+</div>
 
-<h1>{{ userService.selectedCard?.title  || "No title" }}</h1>
-<h1>{{ userService.selectedCard?.description || "No description" }}</h1>
+
+
 <button (click)="userService.setFavorite(userService.selectedCard)">Like</button>

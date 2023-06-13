@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { Data } from '../models/Data';
-import { Card } from '../models/Card';
+import { Card } from '../models/Profile';
 
 
 @Injectable({
@@ -21,8 +21,8 @@ export class UserService {
   setFavorite(profile: Card) {
   const luciano = JSON.parse(this.getData('userLogged'));
 
-  if (luciano.favorites.find((p: Card) => p.title === profile.title)) {
-    const newArr: Card[] = luciano.favorites.filter((element: Card) => element.title !== profile.title);
+  if (luciano.favorites.find((p: Card) => p.name.first === profile.name.first)) {
+    const newArr: Card[] = luciano.favorites.filter((element: Card) => element.name.first !== profile.name.first);
     luciano.favorites = newArr;
     this.saveData('userLogged', JSON.stringify(luciano));
   } else {
