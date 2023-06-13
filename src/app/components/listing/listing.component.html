@@ -6,12 +6,13 @@
     </ng-container>
 </div> -->
 
-<button (click)="goBack()">Torna indietro</button>
-
 <div [ngClass]="'container-fluid'">
-  <div [ngClass]="'row'">
+  <div [ngClass]="'row align-items-center justify-content-between'">
+    <div [ngClass]="'col-3'">
+      <button (click)="goBack()">Torna indietro</button>
   <h1>LISTING</h1>
   <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="filterData()">
+</div>
 </div>
     <ng-container *ngFor="let item of filteredData">
       <div [ngClass]="'align-items-center justify-content-between'">
