@@ -1,4 +1,4 @@
-import { Card } from "./Card";
+import { Profile } from "./Profile";
 import { Data } from "./Data";
 
 export type User = {
@@ -6,5 +6,5 @@ export type User = {
     password:string | undefined;
     name: string | undefined;
     surname: string | undefined;
-    favorites: Card[] | undefined;
+    favorites: Profile[] | undefined;
 }

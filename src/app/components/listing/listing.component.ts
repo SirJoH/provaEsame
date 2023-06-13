@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Card } from 'src/app/models/Card';
+import { Profile } from 'src/app/models/Profile';
 import { Data } from 'src/app/models/Data';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -15,14 +15,15 @@ import {Location} from '@angular/common';
   styleUrls: ['./listing.component.scss'],
 })
 export class ListingComponent {
-  response = new BehaviorSubject<Card[]>([]);
+  response = new BehaviorSubject<Profile[]>([]);
   data!: Data[];
-  cards!: Card[];
+  cards!: Profile[];
   http = inject(HttpClient);
   router = inject(Router);
   userService = inject(UserService);
   location = inject(Location);
-
+  searchTerm = '';
+  filteredData!:Profile[];
 
 
   ngOnInit(): void {
@@ -35,18 +36,24 @@ export class ListingComponent {
       )
       .subscribe((items) => {
         this.data = items.results;
-        this.cards = this.data.map((item) => {
-          return {
-            title: item.name.first,
-            description: item.name.last,
-            srcImg: item.picture.medium,
-          }
-        });
+        this.cards = this.data
+        this.filteredData=this.cards;
         console.log(this.cards)
       });
   };
 
   goBack=() => this.location.back();
 
+  filterData() {
+    if (this.searchTerm.length > 1) {
+      this.filteredData = this.cards.filter(item =>
+        item.name.last.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.name.first.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        (item.name.first+" "+item.name.last).toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredData = this.cards;
+    }
+  }
 
 }

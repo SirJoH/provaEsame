@@ -1,6 +1,6 @@
 import { Component, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Card } from 'src/app/models/Card';
+import { Profile } from 'src/app/models/Profile';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CardComponent {
 
-  @Input() card!:Card;
-  @Output() singleProfile!:Card;
+  @Input() card!:Profile;
+  @Output() singleProfile!:Profile;
 
   userService = inject(UserService);
   router = inject(Router);
@@ -19,12 +19,12 @@ export class CardComponent {
   viewDetails() {
     this.userService.setCard(this.card);
   }
-  onClick(item: Card){
+  onClick(item: Profile){
     this.userService.setCard(item)
     this.router.navigate(['details'])
   }
 
-  prova(profile:Card){
+  prova(profile:Profile){
     this.userService.setFavorite(profile)
   }
 }

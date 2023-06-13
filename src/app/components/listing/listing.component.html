@@ -6,13 +6,23 @@
     </ng-container>
 </div> -->
 
-<button (click)="goBack()">Torna indietro</button>
-
-<div>
-  <h1>LISTING</h1>
-    <ng-container *ngFor="let item of cards">
-      <app-card [card]="item">
+<div [ngClass]="'container-fluid'">
+  <div [ngClass]="'row align-items-center justify-content-between'">
+    <div [ngClass]="'col-3'">
+      <button (click)="goBack()">Torna indietro</button>
+    </div>
+    <div [ngClass]="'col-6'">
+      <h1>LISTING</h1>
+      <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="filterData()">
+    </div>
+  </div>
+  <div [ngClass]="'row'">
+    <ng-container *ngFor="let item of filteredData">
+      <div class="'col col-sm-6 col-md-4 col-lg-3'">
+      <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="card my-5">
         <app-details></app-details>
       </app-card>
+    </div>
     </ng-container>
+  </div>
 </div>

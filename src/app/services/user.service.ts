@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { Data } from '../models/Data';
-import { Card } from '../models/Card';
+import { Profile } from '../models/Profile';
 
 
 @Injectable({
@@ -10,19 +10,19 @@ import { Card } from '../models/Card';
 })
 export class UserService {
 
-  selectedCard!: Card;
+  selectedCard!: Profile;
 
   constructor(private router: Router) { }
 
-  setCard(profile: Card) {
+  setCard(profile: Profile) {
     this.selectedCard = profile;
   }
 
-  setFavorite(profile: Card) {
+  setFavorite(profile: Profile) {
   const luciano = JSON.parse(this.getData('userLogged'));
 
-  if (luciano.favorites.find((p: Card) => p.title === profile.title)) {
-    const newArr: Card[] = luciano.favorites.filter((element: Card) => element.title !== profile.title);
+  if (luciano.favorites.find((p: Profile) => p.name.first === profile.name.first)) {
+    const newArr: Profile[] = luciano.favorites.filter((element: Profile) => element.name.first !== profile.name.first);
     luciano.favorites = newArr;
     this.saveData('userLogged', JSON.stringify(luciano));
   } else {
@@ -64,7 +64,6 @@ export class UserService {
 
 
   logout() {
-    //SISTEMARE IL LOGOUT
     const userBackup=this.getData('userLogged');
     this.saveData('newUser', userBackup);
     this.removeData('userLogged');

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CardComponent } from '../card/card.component';
-import { Card } from 'src/app/models/Card';
+import { Profile } from 'src/app/models/Profile';
 import { UserService } from 'src/app/services/user.service';
 import {Location} from '@angular/common';
 
@@ -16,7 +16,7 @@ export class DetailsComponent {
   userLogged = JSON.parse(this.userService.getData("userLogged"))
 
 
-  @Output() favoriteChanged: EventEmitter<Card> = new EventEmitter<Card>();
+  @Output() favoriteChanged: EventEmitter<Profile> = new EventEmitter<Profile>();
 
 
 

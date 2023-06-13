@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import {Location} from '@angular/common';
-import { Card } from 'src/app/models/Card';
+import { Profile } from 'src/app/models/Profile';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class FavoritesComponent {
   userLogged=JSON.parse(this.userService.getData('userLogged'));
   goBack=() => this.location.back();
 
-  prova(profile:Card){
+  prova(profile:Profile){
     this.userService.setFavorite(profile)
   }
 
