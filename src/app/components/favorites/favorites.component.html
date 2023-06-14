@@ -1,17 +1,13 @@
-<button (click)="goBack()">Torna indietro</button>
-
-<!-- <div>
-  <h1>FAVORITES</h1>
-    <ng-container *ngFor="let item of userLogged.favorites">
-      <app-card [card]="item">
-        <app-details (favoriteChanged)="prova($event)"></app-details>
-      </app-card>
-    </ng-container>
-</div> -->
-
 <div class="container-fluid">
-  <h1 class="text-center">FAVORITES</h1>
-  <div [ngClass]="'row'">
+  <div [ngClass]="'row align-items-center navFavorites'">
+    <div [ngClass]="'col-4 d-flex justify-content-center'">
+      <button (click)="goBack()">Torna indietro</button>
+    </div>
+    <div [ngClass]="'col-4 d-flex justify-content-center'">
+      <h1 class="text-center">FAVORITES</h1>
+    </div>
+  </div>
+  <div [ngClass]="'row py-5'">
     <ng-container *ngFor="let item of userLogged.favorites">
       <div class="'col col-sm-6 col-md-4 col-lg-3'">
       <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="my-5">
@@ -21,6 +17,25 @@
     </ng-container>
   </div>
 </div>
+
+<!-- <div [ngClass]="'row align-items-center justify-content-between navListing'">
+  <div [ngClass]="'col-4 d-flex justify-content-center'">
+    <button (click)="goBack()">Torna indietro</button>
+  </div>
+  <div [ngClass]="'col-4 d-flex justify-content-center'">
+    <h1 class="text-center">LISTING</h1>
+  </div>
+</div> -->
+
+
+<!-- <div>
+  <h1>FAVORITES</h1>
+    <ng-container *ngFor="let item of userLogged.favorites">
+      <app-card [card]="item">
+        <app-details (favoriteChanged)="prova($event)"></app-details>
+      </app-card>
+    </ng-container>
+</div> -->
 
 <!-- <div [ngClass]="'container-fluid'">
   <div [ngClass]="'row align-items-center justify-content-between'">

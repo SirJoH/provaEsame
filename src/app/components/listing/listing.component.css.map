@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"listing.component.css"}
+{"version":3,"sources":["listing.component.scss","listing.component.css"],"names":[],"mappings":"AAAA;EACE,eAAA;EACA,YAAA;EACA,WAAA;EACA,yBAAA;ACCF;;ADEA;EACE,YAAA;ACCF","file":"listing.component.css"}
