@@ -16,9 +16,9 @@ export class CardComponent {
   userService = inject(UserService);
   router = inject(Router);
 
-  viewDetails() {
-    this.userService.setCard(this.card);
-  }
+  // viewDetails() {
+  //   this.userService.setCard(this.card);
+  // }
   onClick(item: Profile){
     this.userService.setCard(item)
     this.router.navigate(['details'])

@@ -21,16 +21,20 @@ export class UserService {
   setFavorite(profile: Profile) {
   const luciano = JSON.parse(this.getData('userLogged'));
 
-  if (luciano.favorites.find((p: Profile) => p.name.first === profile.name.first)) {
-    const newArr: Profile[] = luciano.favorites.filter((element: Profile) => element.name.first !== profile.name.first);
+  if (luciano.favorites.find((p: Profile) => p.email === profile.email)) {
+    const newArr: Profile[] = luciano.favorites.filter((element: Profile) => element.email !== profile.email);
     luciano.favorites = newArr;
     this.saveData('userLogged', JSON.stringify(luciano));
+    console.log(luciano.favorites);
+    return true;
   } else {
     luciano.favorites.push(profile);
     this.saveData('userLogged', JSON.stringify(luciano));
+    console.log(luciano.favorites);
+    return false;
   }
 
-  console.log(luciano.favorites);
+
 }
 
 
