@@ -1,12 +1,46 @@
 <button (click)="goBack()">Torna indietro</button>
 
-<div>
+<!-- <div>
   <h1>FAVORITES</h1>
     <ng-container *ngFor="let item of userLogged.favorites">
-      <app-card [card]="item" >
+      <app-card [card]="item">
         <app-details (favoriteChanged)="prova($event)"></app-details>
       </app-card>
     </ng-container>
+</div> -->
+
+<div class="container-fluid">
+  <h1 class="text-center">FAVORITES</h1>
+  <div [ngClass]="'row'">
+    <ng-container *ngFor="let item of userLogged.favorites">
+      <div class="'col col-sm-6 col-md-4 col-lg-3'">
+      <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="my-5">
+        <app-details></app-details>
+      </app-card>
+    </div>
+    </ng-container>
+  </div>
 </div>
+
+<!-- <div [ngClass]="'container-fluid'">
+  <div [ngClass]="'row align-items-center justify-content-between'">
+    <div [ngClass]="'col-3'">
+      <button (click)="goBack()">Torna indietro</button>
+    </div>
+    <div [ngClass]="'col-6'">
+      <h1>LISTING</h1>
+      <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="filterData()">
+    </div>
+  </div>
+  <div [ngClass]="'row'">
+    <ng-container *ngFor="let item of filteredData">
+      <div class="'col col-sm-6 col-md-4 col-lg-3'">
+      <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="my-5">
+        <app-details></app-details>
+      </app-card>
+    </div>
+    </ng-container>
+  </div>
+</div> -->
 <!-- <button (click)="addNewItem(newItem.value)">Add to parent's list</button> -->
 <!-- <app-customer-detail [customer]="selectedCustomer" (customerChange)="update($event)"></app-customer-detail> -->

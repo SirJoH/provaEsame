@@ -8,18 +8,20 @@
 
 <div [ngClass]="'container-fluid'">
   <div [ngClass]="'row align-items-center justify-content-between'">
-    <div [ngClass]="'col-3'">
+    <div [ngClass]="'col-4 d-flex justify-content-center'">
       <button (click)="goBack()">Torna indietro</button>
     </div>
-    <div [ngClass]="'col-6'">
-      <h1>LISTING</h1>
+    <div [ngClass]="'col-4 d-flex justify-content-center'">
+      <h1 class="text-center">LISTING</h1>
+    </div>
+    <div [ngClass]="'col-4 flex-end d-flex justify-content-center'">
       <input [(ngModel)]="searchTerm" placeholder="Search..." (input)="filterData()">
     </div>
   </div>
   <div [ngClass]="'row'">
     <ng-container *ngFor="let item of filteredData">
       <div class="'col col-sm-6 col-md-4 col-lg-3'">
-      <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="card my-5">
+      <app-card [card]="item" [ngStyle]="{margin: '0px'}" class="my-5">
         <app-details></app-details>
       </app-card>
     </div>

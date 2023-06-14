@@ -1,1 +1,8 @@
-/*# sourceMappingURL=card.component.css.map */
+.card {
+  background-color: #6495ed;
+  font-family: "Arial", sans-serif;
+}
+
+img {
+  border-radius: 50px;
+}/*# sourceMappingURL=card.component.css.map */

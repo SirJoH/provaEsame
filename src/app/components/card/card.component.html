@@ -1,6 +1,6 @@
-<div *ngIf="card; else noCard">
+<div *ngIf="card; else noCard" class="card my-3 ">
   <div (click)="onClick(card)" class="'container-fluid d-flex align-items-center justify-content-center flex-column mt-3 mb-3'">
-    <img *ngIf="card && card.picture.medium" [src]="card.picture.medium" alt="img" />
+    <img *ngIf="card && card.picture.medium" [src]="card.picture.medium" alt="img"/>
     <h3>{{ card.name.first || "No title" }}</h3>
     <h3>{{ card.name.last || "No title" }}</h3>
   </div>
