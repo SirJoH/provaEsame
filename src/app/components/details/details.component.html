@@ -1,4 +1,5 @@
 <button (click)="goBack()">Torna indietro</button>
+<<<<<<< HEAD
 <div class="row d-flex ">
   <div class="col-12 d-flex justify-content-center">
     <img class="w-25" *ngIf="userService.selectedCard?.picture?.large" [src]="userService.selectedCard?.picture?.medium" alt="img" />
@@ -18,3 +19,10 @@
     <button (click)="userService.setFavorite(userService.selectedCard)">Like</button>
   </div>
 </div>
+=======
+<img *ngIf="userService.selectedCard?.srcImg" [src]="userService.selectedCard?.srcImg" alt="img" />
+
+<h1>{{ userService.selectedCard?.title  || "No title" }}</h1>
+<h1>{{ userService.selectedCard?.description || "No description" }}</h1>
+<button (click)="userService.setFavorite(userService.selectedCard)">Like</button>
+>>>>>>> 61a3fd1 (fix profiles)
