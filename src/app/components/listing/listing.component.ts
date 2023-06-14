@@ -36,7 +36,17 @@ export class ListingComponent {
       )
       .subscribe((items) => {
         this.data = items.results;
+<<<<<<< HEAD
         this.cards = this.data
+=======
+        this.cards = this.data.map((item) => {
+          return {
+            title: item.name.first,
+            description: item.name.last,
+            srcImg: item.picture.medium,
+          }
+        });
+>>>>>>> 66c564d (added filter for cards in listing component)
         this.filteredData=this.cards;
         console.log(this.cards)
       });
